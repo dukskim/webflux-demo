@@ -7,3 +7,7 @@
 - Java version : JDK 17
 - Spring Boot : 3.4.4
 - Build : Gradle
+
+## **설정 항목**
+- Spring Security
+- R2DBC (Mysql)
