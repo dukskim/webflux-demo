@@ -19,4 +19,8 @@ public class DemoHandler {
     public Mono<ServerResponse> demoData(ServerRequest request) {
         return  ServerResponse.ok().body(demoDataService.findDemoData(), SingleResponse.class);
     }
+
+    public Mono<ServerResponse> demoDbData(ServerRequest request) {
+        return  ServerResponse.ok().body(demoDataService.findDemoDbData(), SingleResponse.class);
+    }
 }

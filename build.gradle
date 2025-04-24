@@ -29,6 +29,11 @@ dependencies {
 
     // security
     implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    // r2dbc
+    implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
+    // mysql
+    implementation 'io.asyncer:r2dbc-mysql:1.4.1'
 }
 
 tasks.named('test') {
