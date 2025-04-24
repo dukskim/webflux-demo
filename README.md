@@ -1,5 +1,6 @@
 ## **프로젝트 소개**
 - Spring Webflux Demo
+  (Functional 방식 (Router + Handler 방식))
 
 ## **기술 스택 소개**
 
