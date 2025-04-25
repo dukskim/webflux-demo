@@ -8,5 +8,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DemoDataRequest {
-    private String dataType;
+    private String aaa;
 }

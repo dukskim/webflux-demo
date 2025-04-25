@@ -18,9 +18,9 @@ public class DemoDataService {
         return Mono.just(DemoData.builder().aaa("a").bbb("b").build());
     }
 
-    public Mono<DemoData> findDemoDbData() {
-        return demoTestRepository.findByAaa("aaa01")
+    public Mono<DemoData> findDemoDbData(String aaa) {
+        return demoTestRepository.findByAaa(aaa)
             .flatMap(demoTest -> Mono.just(DemoData.builder().aaa(demoTest.getAaa()).bbb(demoTest.getBbb()).build()))
-            .switchIfEmpty(Mono.error(new Exception("No Data")));
+            .switchIfEmpty(Mono.empty());
     }
 }
