@@ -23,9 +23,20 @@ public class DemoHandler {
         return ServerResponse.ok().body(demoDataService.findDemoData(), SingleResponse.class);
     }
 
-    public Mono<ServerResponse> demoDbData(ServerRequest request) {
+    public Mono<ServerResponse> demoDbDataGet(ServerRequest request) {
+        String aaa = request.queryParam("aaa").orElse(null);
+        return ServerResponse.ok().body(demoDataService.findDemoDbData(aaa), SingleResponse.class);
+    }
+
+    public Mono<ServerResponse> demoDbDataPost(ServerRequest request) {
         return request.bodyToMono(DemoDataRequest.class)
-                .flatMap(demoDataRequest -> ServerResponse.ok().body(demoDataService.findDemoDbData(demoDataRequest.getAaa()), SingleResponse.class))
-                .switchIfEmpty(ServerResponse.status(HttpStatus.BAD_REQUEST).contentType(MediaType.APPLICATION_JSON).build());
+                .flatMap(demoDataRequest -> {
+                    if (demoDataRequest.getAaa() == null) {
+                        // 파라미터 체크
+                        return ServerResponse.status(HttpStatus.BAD_REQUEST).contentType(MediaType.APPLICATION_JSON).build();
+                    } else {
+                        return ServerResponse.ok().body(demoDataService.findDemoDbData(demoDataRequest.getAaa()), SingleResponse.class);
+                    }
+                });
     }
 }

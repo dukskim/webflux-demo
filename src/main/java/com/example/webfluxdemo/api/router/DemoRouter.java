@@ -17,7 +17,8 @@ public class DemoRouter {
     public RouterFunction route() {
         return RouterFunctions.route()
                 .GET("/api/v1/demo/data", demoHandler::demoData)
-                .GET("/api/v1/demo/dbdata", demoHandler::demoDbData)
+                .GET("/api/v1/demo/dbdata", demoHandler::demoDbDataGet)
+                .POST("/api/v1/demo/dbdata", demoHandler::demoDbDataPost)
                 .build();
     }
 }
